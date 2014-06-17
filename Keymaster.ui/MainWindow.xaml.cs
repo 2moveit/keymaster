@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using YourDomain.Something;
+using Keymaster.Licensee;
+
 
 namespace Keymaster.ui
 {
@@ -28,31 +29,31 @@ namespace Keymaster.ui
 
         private void btn_CreateLicensee_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateCustomer {Id = Guid.NewGuid(), What = "New"};
+            var cmd = new CreateLicensee {Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress"};
             Domain.Dispatcher.SendCommand(cmd);
         }
 
         private void btn_AddContact_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateCustomer { Id = Guid.NewGuid(), What = "New" };
+            var cmd = new CreateLicensee { Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress" };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
         private void btn_AddLicense_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateCustomer { Id = Guid.NewGuid(), What = "New" };
+            var cmd = new CreateLicensee { Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress" };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
         private void btn_AddActivation_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateCustomer { Id = Guid.NewGuid(), What = "New" };
+            var cmd = new CreateLicensee { Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress" };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
         private void btn_AddVersion_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateCustomer { Id = Guid.NewGuid(), What = "New" };
+            var cmd = new CreateLicensee { Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress" };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
