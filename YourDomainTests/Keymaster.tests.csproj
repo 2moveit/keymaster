@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LicenseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LicenseeTests.cs" />
   </ItemGroup>

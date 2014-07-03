@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Edument.CQRS;
+using Keymaster.License;
 using Keymaster.Licensee;
 
 namespace Keymaster.ui
@@ -19,6 +20,7 @@ namespace Keymaster.ui
             Dispatcher = new MessageDispatcher(new InMemoryEventStore());
 
             Dispatcher.ScanInstance(new LicenseeCommandHandlers());
+            Dispatcher.ScanInstance(new LicenseCommandHandlers());
 
             //CustomerQueries = new Customers();
             //Dispatcher.ScanInstance(CustomerQueries);

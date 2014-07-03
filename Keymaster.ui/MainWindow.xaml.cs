@@ -27,34 +27,41 @@ namespace Keymaster.ui
             InitializeComponent();
         }
 
+        private readonly Guid licenseeId = Guid.NewGuid();
+        private readonly Guid productCode = Guid.NewGuid();
         private void btn_CreateLicensee_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateLicensee {Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress"};
+            var cmd = new CreateLicensee { Id = licenseeId, CompanyName = "MyCompany", Address = "MyAddress" };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
         private void btn_AddContact_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateLicensee { Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress" };
+            var cmd = new AddContact {Id = Guid.NewGuid(), LicenseeId = licenseeId, ContactName = "MyName", Email = "MyEmail" };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
         private void btn_AddLicense_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateLicensee { Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress" };
+            var cmd = new ProvideLicense { ProductCode = productCode, LicenseeId = licenseeId };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
-        private void btn_AddActivation_Click(object sender, RoutedEventArgs e)
+        private void btn_ActivateLicense_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateLicensee { Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress" };
+            var cmd = new ActivateLicense { RegistrationCode = Guid.NewGuid(), LicenseeId = licenseeId, ProductCode = productCode };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
-        private void btn_AddVersion_Click(object sender, RoutedEventArgs e)
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var cmd = new CreateLicensee { Id = Guid.NewGuid(), CompanyName = "MyCompany", Address = "MyAddress" };
-            Domain.Dispatcher.SendCommand(cmd);
+            Domain.Setup();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
     }

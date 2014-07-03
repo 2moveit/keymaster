@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LicenseEvents\LicenseActivated.cs" />
+    <Compile Include="LicenseeEvents\ContactAdded.cs" />
+    <Compile Include="LicenseeEvents\LicenseProvided.cs" />
+    <Compile Include="LicenseEvents\LicenseCreated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LicenseeEvents\LicenseeCreated.cs" />
   </ItemGroup>
