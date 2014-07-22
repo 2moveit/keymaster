@@ -100,6 +100,14 @@
       <Project>{d2bab57d-225d-4f4c-9410-ed39495a8fe0}</Project>
       <Name>Edument.CQRS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Events\Keymaster.events.csproj">
+      <Project>{B195F4C7-41EF-403C-AA05-0018B9DF25F8}</Project>
+      <Name>Keymaster.events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Keymaster.readmodels\Keymaster.readmodels.csproj">
+      <Project>{D8995137-D5B4-4BE2-8527-D682629AD3B9}</Project>
+      <Name>Keymaster.readmodels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YourDomain\Keymaster.csproj">
       <Project>{42fe290d-7a80-451b-ac4f-a7b34b3b3d3b}</Project>
       <Name>Keymaster</Name>

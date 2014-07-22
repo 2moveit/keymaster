@@ -8,8 +8,8 @@
         </Grid.ColumnDefinitions>
         <GroupBox Header="Create licensee" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="148" Width="178">
             <StackPanel Margin="5">
-                <TextBox  Height="23"  TextWrapping="Wrap" Text="CompanyName"  Width="120"/>
-                <TextBox  Height="23"  TextWrapping="Wrap" Text="Address"  Width="120"/>
+                <TextBox  Name="tbx_LicenseeName" Height="23"  TextWrapping="Wrap" Text="CompanyName"  Width="120"/>
+                <TextBox  Name="tbx_LicenseeAddress" Height="23"  TextWrapping="Wrap" Text="Address"  Width="120"/>
                 <Button x:Name="btn_CreateLicensee" Content="Create licensee" Width="120" Height="20" Click="btn_CreateLicensee_Click"/>
             </StackPanel>
         </GroupBox>
@@ -41,8 +41,8 @@
 
         <GroupBox Header="License view" HorizontalAlignment="Left" Margin="366,10,0,0" VerticalAlignment="Top" Height="421" Width="375">
             <StackPanel Margin="5">
-                <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-                <TextBlock Height="338" Margin="0,0,0.333,0"/>
+                <ComboBox Name="cbx_Licensees" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+                <TextBlock Name="tbl_LicenseeDetail" Height="338" Margin="0,0,0.333,0"/>
             </StackPanel>
         </GroupBox>
 
