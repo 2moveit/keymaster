@@ -7,7 +7,6 @@ namespace Keymaster.License
         public Guid Id;
         public Guid ProductCode;
         public Guid RegistrationCode;
-        public Guid LicenseeId;
         public DateTime ActivationDate;
     }
 }

@@ -23,7 +23,7 @@ namespace Keymaster.ui
             
 
             Dispatcher.ScanInstance(new LicenseeCommandHandlers());
-            Dispatcher.ScanInstance(new LicenseCommandHandlers());
+            //Dispatcher.ScanInstance(new LicenseCommandHandlers());
 
             LicenseeQueries = new LicenseeList();
             Dispatcher.ScanInstance(LicenseeQueries);

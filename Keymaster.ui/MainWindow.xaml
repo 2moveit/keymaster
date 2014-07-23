@@ -24,17 +24,17 @@
         <GroupBox Header="Add license" HorizontalAlignment="Left" Margin="0,153,0,0" VerticalAlignment="Top" Height="122" Width="361">
             <StackPanel Margin="5">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <ComboBox Width="120"/>
+                    <ComboBox Name="cbx_LicenseLicensees" Width="120"/>
                 </StackPanel>
-                <TextBox Height="23" TextWrapping="Wrap" Text="ProductCode" Width="295"/>
+                <TextBox Name="tbx_ProductCode" Height="23" TextWrapping="Wrap" Text="ProductCode" Width="295"/>
                 <Button x:Name="btn_AddLicense" Content="Add license" Width="120" Height="20" Click="btn_AddLicense_Click"/>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Add activation" HorizontalAlignment="Left" Margin="0,280,0,0" VerticalAlignment="Top" Height="151" Width="361">
             <StackPanel Margin="5">
-                <ComboBox Width="120"/>
-                <ComboBox Width="295"/>
-                <TextBox Height="23" TextWrapping="Wrap" Text="RegistrationCode" Width="295"/>
+                <ComboBox Name="cbx_ActivationLicensees" Width="120" SelectionChanged="cbx_ActivationLicensees_SelectionChanged"/>
+                <ComboBox Name="cbx_ActivationProductCodes" Width="295"/>
+                <TextBox Name="tbx_RegistrationCode" Height="23" TextWrapping="Wrap" Text="RegistrationCode" Width="295"/>
                 <Button x:Name="btn_ActivateLicense" Content="Activate license" Width="120" Height="20" Click="btn_ActivateLicense_Click"/>
             </StackPanel>
         </GroupBox>

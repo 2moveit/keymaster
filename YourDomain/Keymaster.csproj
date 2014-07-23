@@ -46,6 +46,7 @@
     <Compile Include="Licensee\ActivateLicense.cs" />
     <Compile Include="Licensee\AddContact.cs" />
     <Compile Include="Licensee\LicenseeNotRegistered.cs" />
+    <Compile Include="Licensee\LicenseNotProvidedForLicensee.cs" />
     <Compile Include="Licensee\ProvideLicense.cs" />
     <Compile Include="Licensee\Contact.cs" />
     <Compile Include="License\Activation.cs" />

@@ -10,5 +10,6 @@ namespace Keymaster.readmodels
     {
         IList<string> Licensees();
         LicenseeDetails DetailsForLicensee(string licenseeName);
+        IList<string> ProvidedProductCodes(Guid licenseeId);
     }
 }

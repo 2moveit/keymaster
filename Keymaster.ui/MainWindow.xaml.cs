@@ -30,8 +30,7 @@ namespace Keymaster.ui
             InitializeComponent();
         }
 
-        private readonly Guid licenseeId = Guid.NewGuid();
-        private readonly Guid productCode = Guid.NewGuid();
+ 
 
         private Guid CreateGuid(string companyName)
         {
@@ -59,13 +58,23 @@ namespace Keymaster.ui
 
         private void btn_AddLicense_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new ProvideLicense { ProductCode = productCode, LicenseeId = licenseeId };
+            string licensee = string.Empty;
+            if (cbx_LicenseLicensees.SelectedValue != null)
+                licensee = cbx_LicenseLicensees.SelectedValue.ToString();
+            var cmd = new ProvideLicense { Id = CreateGuid(licensee) , ProductCode = CreateGuid(tbx_ProductCode.Text) };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
         private void btn_ActivateLicense_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new ActivateLicense { RegistrationCode = Guid.NewGuid(), LicenseeId = licenseeId, ProductCode = productCode };
+             string licensee = string.Empty;
+            if (cbx_ActivationLicensees.SelectedValue != null)
+                licensee = cbx_LicenseLicensees.SelectedValue.ToString();
+
+            string productCode = string.Empty;
+            if (cbx_ActivationProductCodes.SelectedValue != null)
+                productCode = cbx_ActivationProductCodes.SelectedValue.ToString();
+            var cmd = new ActivateLicense { Id = CreateGuid(licensee), RegistrationCode = CreateGuid(tbx_RegistrationCode.Text), ProductCode = new Guid(productCode) };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
@@ -85,6 +94,16 @@ namespace Keymaster.ui
             IList<string> licensees = Domain.LicenseeQueries.Licensees();
             cbx_Licensees.ItemsSource = licensees;
             cbx_ContactLicensees.ItemsSource = licensees;
+            cbx_LicenseLicensees.ItemsSource = licensees;
+            cbx_ActivationLicensees.ItemsSource = licensees;
+        }
+
+        private void cbx_ActivationLicensees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+              string licensee = string.Empty;
+            if (cbx_ActivationLicensees.SelectedValue != null)
+                licensee = cbx_LicenseLicensees.SelectedValue.ToString();
+            cbx_ActivationProductCodes.ItemsSource = Domain.LicenseeQueries.ProvidedProductCodes(CreateGuid(licensee));
         }
     }
 }

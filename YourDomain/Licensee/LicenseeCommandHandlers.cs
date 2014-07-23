@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using Edument.CQRS;
 using Keymaster.Events.LicenseeEvents;
+using Keymaster.License;
 
 namespace Keymaster.Licensee
 {
     public class LicenseeCommandHandlers :
         IHandleCommand<CreateLicensee, Licensee>,
         IHandleCommand<AddContact, Licensee>,
-        IHandleCommand<ProvideLicense, Licensee>
+        IHandleCommand<ProvideLicense, Licensee>,
+        IHandleCommand<ActivateLicense, Licensee>
     {
         public IEnumerable Handle(Func<Guid, Licensee> al, CreateLicensee c)
         {
@@ -40,11 +43,30 @@ namespace Keymaster.Licensee
 
         public IEnumerable Handle(Func<Guid, Licensee> al, ProvideLicense c)
         {
+            Licensee agg = al(c.Id);
+            if (!agg.IsRegistered)
+                throw new LicenseeNotRegistered();
             yield return new LicenseProvided()
             {
-                LicenseeId = c.LicenseeId,
+                Id = c.Id,
                 ProductCode = c.ProductCode
             };
+        }
+
+
+        public IEnumerable Handle(Func<Guid, Licensee> al, ActivateLicense c)
+        {
+            Licensee agg = al(c.Id);
+            if (!agg.Licenses.Exists(l => l.ProductCode == c.ProductCode))
+                throw new LicenseNotProvidedForLicensee();
+            yield return
+                new LicenseActivated
+                {
+                    Id = c.Id,
+                    ActivationDate = DateTime.Now,
+                    ProductCode = c.ProductCode,
+                    RegistrationCode = c.RegistrationCode
+                };
         }
     }
 }

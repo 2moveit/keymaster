@@ -107,12 +107,12 @@ namespace Keymaster.Tests
                 }),
                 When(new ProvideLicense()
                 {
-                    LicenseeId = licenseeId,
+                    Id = licenseeId,
                     ProductCode = productCode
                 }),
                 Then(new LicenseProvided
                 {
-                    LicenseeId = licenseeId,
+                    Id = licenseeId,
                     ProductCode = productCode
                 }));
         }
