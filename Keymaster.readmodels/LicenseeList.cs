@@ -58,7 +58,7 @@ namespace Keymaster.readmodels
         {
             lock (licensesByLicensee)
             {
-                licensesByLicensee.First(l => l.Key == e.LicenseeId)
+                licensesByLicensee.First(l => l.Key == e.Id)
                     .Value.Contacts.Add(new ContactItem() {Name = e.ContactName, Email = e.Email});
             }
         }

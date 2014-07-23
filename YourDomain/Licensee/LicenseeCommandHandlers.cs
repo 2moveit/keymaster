@@ -14,7 +14,7 @@ namespace Keymaster.Licensee
         {
             Licensee agg = al(c.Id);
 
-            if (agg.AlreadyHappened)
+            if (agg.IsRegistered)
                 throw new LicenseeAlreadyExists();
 
             yield return new LicenseeCreated
@@ -27,10 +27,12 @@ namespace Keymaster.Licensee
 
         public IEnumerable Handle(Func<Guid, Licensee> al, AddContact c)
         {
+            Licensee agg = al(c.Id);
+            if (!agg.IsRegistered)
+                throw new LicenseeNotRegistered();
             yield return new ContactAdded()
             {
                 Id = c.Id,
-                LicenseeId = c.LicenseeId,
                 ContactName= c.ContactName,
                 Email= c.Email
             };

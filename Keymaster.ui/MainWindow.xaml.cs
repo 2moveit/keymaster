@@ -50,7 +50,10 @@ namespace Keymaster.ui
 
         private void btn_AddContact_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new AddContact { Id = CreateGuid(tbx_Contact.Text), LicenseeId = CreateGuid(cbx_ContactLicensees.SelectedValue.ToString()), ContactName = tbx_Contact.Text, Email = tbx_Email.Text };
+            string licensee = string.Empty;
+            if (cbx_ContactLicensees.SelectedValue != null)
+                licensee = cbx_ContactLicensees.SelectedValue.ToString();
+            var cmd = new AddContact { Id = CreateGuid(licensee), ContactName = tbx_Contact.Text, Email = tbx_Email.Text };
             Domain.Dispatcher.SendCommand(cmd);
         }
 

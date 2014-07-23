@@ -6,7 +6,6 @@ namespace Keymaster.Events.LicenseeEvents
     {
         public string ContactName;
         public string Email;
-        public Guid LicenseeId;
         public Guid Id;
     }
 }

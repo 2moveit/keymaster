@@ -9,7 +9,7 @@ namespace Keymaster.Licensee
         IApplyEvent<ContactAdded>,
         IApplyEvent<LicenseProvided>
     {
-        public bool AlreadyHappened { get; private set; }
+        public bool IsRegistered { get; private set; }
 
         public string Address { get; set; }
 
@@ -25,7 +25,7 @@ namespace Keymaster.Licensee
 
         public void Apply(LicenseeCreated e)
         {
-            AlreadyHappened = true;
+            IsRegistered = true;
             CompanyName = e.CompanyName;
             Address = e.Address;
         }

@@ -71,14 +71,28 @@ namespace Keymaster.Tests
                 {
                     ContactName = "MyName",
                     Email = "MyEmail",
-                    LicenseeId = licenseeId
+                    Id = licenseeId
                 }),
                 Then(new ContactAdded
                 {
                     ContactName = "MyName",
                     Email = "MyEmail",
-                    LicenseeId = licenseeId
+                    Id = licenseeId
                 }));
+        }
+
+        [Fact]
+        public void AddContactCannotHappenWithoutLicensee()
+        {
+            Test(
+                Given(),
+                When(new AddContact()
+                {
+                    ContactName = "MyName",
+                    Email = "MyEmail",
+                    Id = licenseeId
+                }),
+                 ThenFailWith<LicenseeNotRegistered>());
         }
 
         [Fact]
