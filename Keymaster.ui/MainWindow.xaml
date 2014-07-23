@@ -15,9 +15,9 @@
         </GroupBox>
         <GroupBox Header="Add contact" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top" Height="148" Width="178">
             <StackPanel Margin="5">
-                <ComboBox  Width="120" Height="22"/>
-                <TextBox Height="23" TextWrapping="Wrap" Text="Contact" Width="120"/>
-                <TextBox Height="23" TextWrapping="Wrap" Text="Email" Width="120"/>
+                <ComboBox Name="cbx_ContactLicensees" Width="120" Height="22"/>
+                <TextBox Name="tbx_Contact" Height="23" TextWrapping="Wrap" Text="Contact" Width="120"/>
+                <TextBox Name="tbx_Email" Height="23" TextWrapping="Wrap" Text="Email" Width="120"/>
                 <Button x:Name="btn_AddContact" Content="Add contact" Width="120" Height="20" Click="btn_AddContact_Click"/>
             </StackPanel>
         </GroupBox>

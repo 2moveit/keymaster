@@ -50,7 +50,7 @@ namespace Keymaster.ui
 
         private void btn_AddContact_Click(object sender, RoutedEventArgs e)
         {
-            var cmd = new AddContact {Id = Guid.NewGuid(), LicenseeId = licenseeId, ContactName = "MyName", Email = "MyEmail" };
+            var cmd = new AddContact { Id = CreateGuid(tbx_Contact.Text), LicenseeId = CreateGuid(cbx_ContactLicensees.SelectedValue.ToString()), ContactName = tbx_Contact.Text, Email = tbx_Email.Text };
             Domain.Dispatcher.SendCommand(cmd);
         }
 
@@ -79,7 +79,9 @@ namespace Keymaster.ui
 
         public void Handle(LicenseeCreated e)
         {
-            cbx_Licensees.ItemsSource = Domain.LicenseeQueries.Licensees();
+            IList<string> licensees = Domain.LicenseeQueries.Licensees();
+            cbx_Licensees.ItemsSource = licensees;
+            cbx_ContactLicensees.ItemsSource = licensees;
         }
     }
 }

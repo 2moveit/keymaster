@@ -4,8 +4,9 @@ namespace Keymaster.Events.LicenseeEvents
 {
     public class ContactAdded
     {
-        public string ContactName { get; set; }
-        public string Email { get; set; }
-        public Guid LicenseeId { get; set; }
+        public string ContactName;
+        public string Email;
+        public Guid LicenseeId;
+        public Guid Id;
     }
 }

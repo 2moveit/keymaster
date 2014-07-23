@@ -7,7 +7,8 @@ using Keymaster.Events.LicenseeEvents;
 namespace Keymaster.readmodels
 {
     public class LicenseeList:ILicenseeQueries,
-        ISubscribeTo<LicenseeCreated>
+        ISubscribeTo<LicenseeCreated>,
+        ISubscribeTo<ContactAdded>
     {
         private readonly Dictionary<Guid, LicenseCollection> licensesByLicensee =
             new Dictionary<Guid, LicenseCollection>();
@@ -33,7 +34,8 @@ namespace Keymaster.readmodels
                 {
                     LicenseeId = detail.Key,
                     LicenseeName = detail.Value.CompanyName,
-                    OwenedLicenses = new List<LicenseItem>(detail.Value.OwenedLicenses)
+                    OwenedLicenses = new List<LicenseItem>(detail.Value.OwenedLicenses),
+                    Contacts = new List<ContactItem>(detail.Value.Contacts)
                 };
             }
         }
@@ -47,8 +49,18 @@ namespace Keymaster.readmodels
                 {
                     CompanyName = e.CompanyName,
                     Address = e.Address,
-                    OwenedLicenses = new List<LicenseItem>()
+                    OwenedLicenses = new List<LicenseItem>(),
+                    Contacts = new List<ContactItem>() 
                 });
+        }
+
+        public void Handle(ContactAdded e)
+        {
+            lock (licensesByLicensee)
+            {
+                licensesByLicensee.First(l => l.Key == e.LicenseeId)
+                    .Value.Contacts.Add(new ContactItem() {Name = e.ContactName, Email = e.Email});
+            }
         }
     }
 }

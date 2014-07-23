@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactItem.cs" />
     <Compile Include="ILicenseeQueries.cs" />
     <Compile Include="LicenseCollection.cs" />
     <Compile Include="LicenseeDetails.cs" />

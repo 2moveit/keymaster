@@ -29,6 +29,7 @@ namespace Keymaster.Licensee
         {
             yield return new ContactAdded()
             {
+                Id = c.Id,
                 LicenseeId = c.LicenseeId,
                 ContactName= c.ContactName,
                 Email= c.Email
